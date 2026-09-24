@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Librería JS</title>
+    <script src="js/utileria.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="validacion">
+        <h1>Registro de usuario</h1>
+        <p>Formulario de prueba para librería</p>
+        <form id="registro">
+
+            <!-- Nombre -->
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ej. Francisco González">
+
+            <!-- Correo -->
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" placeholder="Ej. ejemplo@gmail.com">
+
+            <!-- Fecha de nacimiento -->
+            <label for="fechaNacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fechaNacimiento">
+
+            <!-- Codigo Postal -->
+            <label for="codigoPostal">Codigo Postal:</label>
+            <input type="number" id="codigoPostal" placeholder="5 dígitos">
+
+            <!-- Contraseña -->
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" placeholder="Ej. Hola123!">
+
+            <button type="submit">Validar formulario</button>
+        </form>
+        <p id="mensaje"></p>
+        <!--a href="login.html">Ir al inicio de sesión</a-->
+    </div>
+    <!-- Modal -->
+    <div id="modalEdad" class="modal">
+        <div class="modal-contenido">
+            <h2>Edad calculada</h2>
+            <p id="resultadoEdad"></p>
+            <button id="aceptarModal">Aceptar</button>
+        </div>
+    </div>
+    <!-- Funciones -->
+    <script>
+        const formulario = document.getElementById("registro");
+        formulario.addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
+            const nombre = document.getElementById("nombre").value.trim();
+            const correo = document.getElementById("correo").value.trim();
+            const fechaNacimiento = document.getElementById("fechaNacimiento").value;
+            const codigoPostal = document.getElementById("codigoPostal").value;
+            const password = document.getElementById("password").value;
+
+            const mensaje = document.getElementById("mensaje");
+            // Validar nombre
+            if (!soloLetras(nombre)) {
+                mensaje.textContent = "El nombre solo debe contener letras.";
+                return;
+            }
+            // Validar correo
+            if (!validarCorreo(correo)) {
+                mensaje.textContent = "El correo electrónico no es válido.";
+                return;
+            }
+            // Validar fecha
+            if (fechaNacimiento === "") {
+                mensaje.textContent = "Debes ingresar tu fecha de nacimiento.";
+                return;
+            }
+            // Validar codigo Postal
+            if (!validarLongitud(codigoPostal, 5)) {
+                mensaje.textContent = "El número debe contener exactamente 5 dígitos.";
+                return;
+            }
+            // Validar contraseña
+            if (!validarPassword(password)) {
+                mensaje.textContent =
+                    "La contraseña debe tener mínimo 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.";
+                return;
+            }
+            // Calcular edad
+            const edad = calcularEdad(fechaNacimiento);
+            // Verificar mayoría de edad
+            if (!esMayorDeEdad(fechaNacimiento)) {
+                mensaje.textContent = "Debes ser mayor de edad.";
+                return;
+            }
+            mensaje.textContent = "¡Todos los datos son válidos!";
+            // Mostrar modal
+            document.getElementById("resultadoEdad").textContent = "Tu edad es de " + edad + " años.";
+            document.getElementById("modalEdad").style.display = "flex";
+        });
+        // Cerrar modal con el botón Aceptar
+        document.getElementById("aceptarModal").addEventListener("click", function() {
+            document.getElementById("modalEdad").style.display = "none";
+        });
+    </script>
+</body>
+</html>
