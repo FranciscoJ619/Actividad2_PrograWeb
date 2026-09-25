@@ -8,6 +8,7 @@ function validarCampos(){
     const fechaNacimiento = document.getElementById("fechaNacimiento").value;
     const codigoPostal = document.getElementById("codigoPostal").value;
     const password = document.getElementById("password").value;
+    const respuesta = document.getElementById("respuesta").value;
 
     const mensaje = document.getElementById("mensaje");
     // Validar nombre
@@ -54,6 +55,11 @@ function validarCampos(){
     // Verificar mayoría de edad
     if (!esMayorDeEdad(fechaNacimiento)) {
         mensaje.textContent = "Debes ser mayor de edad.";
+        return;
+    }
+    // Validar robot
+    if (!validarRobot(respuesta)) {
+        mensaje.textContent = "La respuesta es incorrecta";
         return;
     }
     mensaje.textContent = "¡Todos los datos son válidos!";

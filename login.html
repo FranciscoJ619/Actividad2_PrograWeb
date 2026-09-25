@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <script src="js/utileria.js"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/validarLogin.js"></script>
     <title>Login</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
             <input type="password" id="password" placeholder="Ej. Hola123!">
 
             <p id="mensaje"></p>
-            <button type="submit">Registrarme</button>
+            <button type="submit" onclick="validarLogin()">Registrarme</button>
         </form>
         <a href="index.html">Ir a la validacion</a>
     </div>
@@ -27,36 +28,9 @@
     <div id="modalLogin" class="modal">
         <div class="modal-contenido">
             <p id="registrar"></p>
+            <img src="img/bolaAmarilla.png" alt="validado" width="300">
             <button id="aceptarModal">Aceptar</button>
         </div>
     </div>
-    <script>
-        const formulario = document.getElementById("registro");
-        formulario.addEventListener("submit", function(evento) {
-            evento.preventDefault();
-
-            const correo = document.getElementById("correo").value.trim();
-            const password = document.getElementById("password").value;
-            // Validar correo
-            if (!validarCorreo(correo)) {
-                mensaje.textContent = "El correo electrónico no es válido.";
-                return;
-            }
-            // Validar contraseña
-            if (!validarPassword(password)) {
-                mensaje.textContent =
-                    "La contraseña debe tener mínimo 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.";
-                return;
-            }
-            mensaje.textContent = "¡Todos los datos son válidos!";
-            // Mostrar modal
-            document.getElementById("registrar").textContent = "Registro exitoso";
-            document.getElementById("modalLogin").style.display="flex";
-        });
-        // Cerrar modal con el botón Aceptar
-        document.getElementById("aceptarModal").addEventListener("click", function() {
-            document.getElementById("modalLogin").style.display = "none";
-        });
-    </script>
 </body>
 </html>
