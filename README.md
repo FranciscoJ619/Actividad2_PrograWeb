@@ -36,12 +36,12 @@ Actividad 2/
 │   └── validarLogin.js
 │
 └── img/
-│   └── bolaAmarilla.png
-│   └── muchoTexto.png
-│   └── captura1.png
-│   └── captura2.png
-│   └── captura3.png
-│   └── captura4.png
+    └── bolaAmarilla.png
+    └── muchoTexto.png
+    └── captura1.png
+    └── captura2.png
+    └── captura3.png
+    └── captura4.png
 ```
 
 ---
@@ -245,13 +245,6 @@ A continuación se mostrarán capturas de pantalla que demuestran el funcionamie
 ### Login Exitoso
 
 ![Logeo](img/captura4.png)
-
----
-
-## Video demostrativo
-
-En el video se presenta el funcionamiento de la librería JavaScript, mostrando el problema que busca resolver, la manera en que se utilizan sus funciones y los resultados obtenidos mediante el formulario y el inicio de sesión.
-
 
 ---
 
