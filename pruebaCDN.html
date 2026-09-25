@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba de utileria en CDN</title>
+    <script src="https://cdn.jsdelivr.net/gh/FranciscoJ619/Actividad2_PrograWeb@main/js/utileria.js"></script>
+</head>
+<body>
+    <h1>Prueba de funciones en CDN</h1>
+    <h2>Para ver las validaciones abra la consola:</h2>
+    <h1>PRESIONE "F12"</h1>
+    <h3>Luego abra la pestaña "cosole" para</h3>
+    <h3>verificar las funciones de validacion</h3>
+    <h3>Ejemplo:</h3>
+    <img src="img/consolaCDN.png" alt="muchoText" width="700">
+    <script>
+        console.log("Correo:", validarCorreo("ejemplo@gmail.com"));
+        console.log("Letras:", soloLetras("Maria Jose"));
+        console.log("Codigo Postal:", validarLongitud(12345, 5));
+        console.log("Edad:", calcularEdad("2000-06-20"));
+        console.log("Mayor de edad:", esMayorDeEdad("2005-06-20"));
+        console.log("Password:", validarPassword("Ejemplo666!"));
+        console.log("Captcha", validarRobot("67"));
+    </script>
+</body>
+</html>
