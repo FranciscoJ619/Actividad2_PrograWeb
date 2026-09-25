@@ -36,9 +36,24 @@ function validarPassword(contrasena) {
     const tieneNumero = /[0-9]/.test(contrasena); 
     const tieneEspecial = /[^A-Za-z0-9]/.test(contrasena); 
     const tieneLongitud = contrasena.length >= 8; 
-    if (tieneMayuscula && tieneMinuscula && tieneNumero && tieneEspecial && tieneLongitud){
+
+    if (!tieneMayuscula){
+        return 1;
+    } else if (!tieneMinuscula){
+        return 2;
+    } else if (!tieneNumero){
+        return 3;
+    } else if (!tieneEspecial){
+        return 4;
+    } else if (!tieneLongitud){
+        return 5;
+    } else {
+        return 6;
+    }
+
+    /*if (tieneMayuscula && tieneMinuscula && tieneNumero && tieneEspecial && tieneLongitud){
         return true;
     } else {
         return false;
-    }
+    }*/
 }
